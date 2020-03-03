@@ -14,6 +14,7 @@ import androidx.annotation.NonNull;
 import androidx.paging.PagedListAdapter;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.amit.redditgaming.R;
 import com.amit.redditgaming.databinding.FeedItemBinding;
 import com.amit.redditgaming.databinding.NetworkItemBinding;
 import com.amit.redditgaming.model.Children;
@@ -111,7 +112,7 @@ public class FeedListAdapter extends PagedListAdapter<Children, RecyclerView.Vie
             SpannableString subReddit = new SpannableString(child.getData().getSubreddit());
             binding.itemSubreddit.setText(subReddit);
 
-            Glide.with(context).load(child.getData().getThumbnail()).into(binding.redditThumb);
+            Glide.with(context).load(child.getData().getThumbnail()).placeholder(R.drawable.ic_placeholder).into(binding.redditThumb);
 
             binding.rootView.setOnClickListener(v -> {
                 try {
