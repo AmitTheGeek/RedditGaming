@@ -1,4 +1,4 @@
-package com.amit.redditgaming.Activity;
+package com.amit.redditgaming.activity;
 
 import android.os.Bundle;
 import android.os.Handler;

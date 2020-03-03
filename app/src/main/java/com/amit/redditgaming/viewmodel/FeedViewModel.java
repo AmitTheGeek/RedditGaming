@@ -22,7 +22,7 @@ public class FeedViewModel extends ViewModel {
 
     private Executor executor;
     private LiveData<NetworkState> networkState;
-    private LiveData<PagedList<Children>> childrens;
+    private LiveData childrens;
 
 
     private AppController appController;
@@ -36,12 +36,8 @@ public class FeedViewModel extends ViewModel {
 
         FeedDataFactory feedDataFactory = new FeedDataFactory(appController);
         networkState = Transformations.switchMap(feedDataFactory.getMutableLiveData(),
-                new Function<FeedDataSource, LiveData<NetworkState>>() {
-                    @Override
-                    public LiveData<NetworkState> apply(FeedDataSource dataSource) {
-                        return dataSource.getNetworkState();
-                    }
-                });
+                (Function<FeedDataSource, LiveData<NetworkState>>)
+                        dataSource -> dataSource.getNetworkState());
 
         PagedList.Config pagedListConfig =
                 (new PagedList.Config.Builder())

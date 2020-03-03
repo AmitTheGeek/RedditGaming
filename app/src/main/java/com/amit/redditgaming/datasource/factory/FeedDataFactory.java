@@ -15,7 +15,7 @@ public class FeedDataFactory extends DataSource.Factory {
 
     public FeedDataFactory(AppController appController) {
         this.appController = appController;
-        this.mutableLiveData = new MutableLiveData<FeedDataSource>();
+        this.mutableLiveData = new MutableLiveData<>();
     }
 
     @Override

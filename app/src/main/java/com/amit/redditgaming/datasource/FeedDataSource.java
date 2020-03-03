@@ -92,7 +92,7 @@ public class FeedDataSource extends PageKeyedDataSource<String, Children> {
             @Override
             public void onResponse(Call<Feed> call, Response<Feed> response) {
                 if(response.isSuccessful()) {
-                    String nextKey = (params.key == response.body().getData().getAfter()) ? null : params.key+1;
+                    String nextKey = (params.key.equals(response.body().getData().getAfter())) ? null : params.key+1;
                     callback.onResult(response.body().getData().getChildren(), nextKey);
                     networkState.postValue(NetworkState.LOADED);
 
