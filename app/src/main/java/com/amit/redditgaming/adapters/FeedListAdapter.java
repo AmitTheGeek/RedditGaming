@@ -17,6 +17,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.amit.redditgaming.databinding.FeedItemBinding;
 import com.amit.redditgaming.databinding.NetworkItemBinding;
 import com.amit.redditgaming.model.Children;
+import com.amit.redditgaming.rest.RestApiFactory;
 import com.amit.redditgaming.utils.NetworkState;
 import com.bumptech.glide.Glide;
 
@@ -114,7 +115,9 @@ public class FeedListAdapter extends PagedListAdapter<Children, RecyclerView.Vie
 
             binding.rootView.setOnClickListener(v -> {
                 try {
-                    Intent myIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(child.getData().getPermalink()));
+                    System.out.println("url is " + RestApiFactory.getBaseUrl() + child.getData().getPermalink());
+                    Intent myIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(
+                            RestApiFactory.getBaseUrl() + child.getData().getPermalink()));
                     myIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                     FeedListAdapter.this.context.startActivity(myIntent);
                 }catch(ActivityNotFoundException e){

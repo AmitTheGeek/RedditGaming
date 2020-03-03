@@ -1,8 +1,11 @@
 package com.amit.redditgaming.Activity;
 
 import android.os.Bundle;
+import android.os.Handler;
+import android.view.View;
 
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -35,6 +38,11 @@ public class FeedActivity extends AppCompatActivity {
          * */
         feedViewModel = new FeedViewModel(AppController.create(this));
 
+        ActionBar actionbar = getSupportActionBar();
+        if(actionbar != null){
+            actionbar.hide();
+        }
+
         /*
          * Step 2: Setup the adapter class for the RecyclerView
          *
@@ -50,6 +58,15 @@ public class FeedActivity extends AppCompatActivity {
          * */
         feedViewModel.getRedditData().observe(this, pagedList -> {
             adapter.submitList(pagedList);
+
+            final Handler handler = new Handler();
+            handler.postDelayed(() -> {
+                binding.splashScreen.setVisibility(View.GONE);
+                binding.swipeRefreshLayout.setVisibility(View.VISIBLE);
+                if(actionbar != null){
+                    actionbar.show();
+                }
+            }, 2000);
         });
 
         /*

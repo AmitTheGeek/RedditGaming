@@ -24,4 +24,8 @@ public class RestApiFactory {
                 .build();
         return retrofit.create(RestApi.class);
     }
+
+    public static String getBaseUrl() {
+        return BASE_URL;
+    }
 }

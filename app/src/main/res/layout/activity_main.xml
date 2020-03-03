@@ -2,26 +2,59 @@
 
     <data class="FeedActivityBinding" />
 
-
-    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-        android:id="@+id/swipe_refresh_layout"
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <LinearLayout
+        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+            android:id="@+id/swipe_refresh_layout"
+            android:layout_width="match_parent"
+            android:visibility="gone"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/cardview_light_background"
+                android:orientation="vertical">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/list_feed"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+
+
+            </LinearLayout>
+
+        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+        <RelativeLayout
+            android:id="@+id/splash_screen"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@color/cardview_light_background"
             android:orientation="vertical">
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/list_feed"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent" />
+            <ImageView
+                android:id="@+id/logo"
+                android:layout_width="140dp"
+                android:layout_height="140dp"
+                android:layout_centerInParent="true"
+                android:layout_marginTop="-70dp"
+                android:src="@drawable/redditlogo" />
+
+            <TextView
+                android:id="@+id/root_splash_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Reddit"
+                android:layout_marginTop="15dp"
+                android:layout_centerHorizontal="true"
+                android:layout_below="@id/logo"
+                android:textSize="30sp" />
 
 
-        </LinearLayout>
-
-    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+        </RelativeLayout>
+    </RelativeLayout>
 
 </layout>
