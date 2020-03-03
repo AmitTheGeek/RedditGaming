@@ -115,7 +115,6 @@ public class FeedListAdapter extends PagedListAdapter<Children, RecyclerView.Vie
 
             binding.rootView.setOnClickListener(v -> {
                 try {
-                    System.out.println("url is " + RestApiFactory.getBaseUrl() + child.getData().getPermalink());
                     Intent myIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(
                             RestApiFactory.getBaseUrl() + child.getData().getPermalink()));
                     myIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
